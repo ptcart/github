@@ -1,0 +1,3 @@
+C:\Users\ptcart\source\repos\Euclid\Debug\Euclid.exe
+C:\Users\ptcart\source\repos\Euclid(random)\Debug\Euclid.exe
+C:\Users\ptcart\Desktop\Euclid(random)소지용\Debug\Euclid.exe

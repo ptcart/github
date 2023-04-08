@@ -1,0 +1,3 @@
+﻿  test.c
+C:\Users\ptcart\Desktop\Euclid(random)소지용\test.c(19,7): warning C4013: 'srand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  Euclid.vcxproj -> C:\Users\ptcart\Desktop\Euclid(random)소지용\Debug\Euclid.exe
