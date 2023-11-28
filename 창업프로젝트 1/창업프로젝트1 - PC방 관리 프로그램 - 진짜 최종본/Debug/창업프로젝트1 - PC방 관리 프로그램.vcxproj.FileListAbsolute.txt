@@ -1,0 +1,5 @@
+C:\Users\ptcart\source\repos\창업프로젝트1 - PC방 관리 프로그램\Debug\창업프로젝트1 - PC방 관리 프로그램.exe
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램\Debug\창업프로젝트1 - PC방 관리 프로그램.exe
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 복사본\Debug\창업프로젝트1 - PC방 관리 프로그램.exe
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 최종본\Debug\창업프로젝트1 - PC방 관리 프로그램.exe
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 진짜 최종본\Debug\창업프로젝트1 - PC방 관리 프로그램.exe

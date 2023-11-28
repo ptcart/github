@@ -1,0 +1,5 @@
+﻿  admin_pc.c
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 진짜 최종본\admin_pc.c(244,17): warning C4013: 'modify_button2'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 진짜 최종본\admin_pc.c(1552,6): warning C4101: 'menu_num' :참조되지 않은 지역 변수입니다.
+C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 진짜 최종본\admin_pc.c(1644,1): warning C4029: 선언된 정식 매개 변수 목록이 정의와 다릅니다.
+  창업프로젝트1 - PC방 관리 프로그램.vcxproj -> C:\Users\ptcart\Desktop\창업프로젝트1 - PC방 관리 프로그램 - 진짜 최종본\Debug\창업프로젝트1 - PC방 관리 프로그램.exe
