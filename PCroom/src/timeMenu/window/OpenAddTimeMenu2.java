@@ -187,11 +187,7 @@ public class OpenAddTimeMenu2 extends JFrame {
 
                 remainingSeconds += selectedAddSeconds;
                 useMoney += selectedCost;
-                
-//                textFieldRemainingTime.setText(formatTime(remainingSeconds));
-//                textFieldUsageFee.setText(useMoney + " 원");
-                
-                
+               
                 String response1 = client.sendCommand("MOD_TIME_SIMPLE," + userId + "," + selectedAddSeconds); // 모든 데이터를 요청
                 String response2 = client.sendCommand("TIME_PAY," + userId + "," + this.timeNum); // 모든 데이터를 요청
                 
