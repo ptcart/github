@@ -1,6 +1,8 @@
 package member.window;
 
 import javax.swing.*;
+
+import admin.window.userManage;
 import chatNetwork.Client;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -156,6 +158,7 @@ public class RegMemDialog extends JDialog {
                 String response = client.sendCommand("ADD_MEM," + id + "," + pw + "," + name + "," + gender + "," + phoneNum);
 
                 showMessage("회원을 등록했습니다.");
+                dispose();
             }
         });
         getContentPane().add(btnNewButton);
@@ -170,7 +173,7 @@ public class RegMemDialog extends JDialog {
         btnNewButton_1.setFocusPainted(false); // 버튼 선택 시 테두리 제거
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                dispose();   
             }
         });
         getContentPane().add(btnNewButton_1);

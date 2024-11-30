@@ -132,15 +132,7 @@ public class saleStatus extends JFrame {
 
         // "나가기" 버튼 이벤트 리스너 추가
         exitButton.addActionListener(e -> {
-            int confirm = JOptionPane.showConfirmDialog(
-                    null, 
-                    "정말 창을 닫으시겠습니까?", 
-                    "창 닫기 확인", 
-                    JOptionPane.YES_NO_OPTION
-            );
-            if (confirm == JOptionPane.YES_OPTION) {
-                dispose(); // 현재 창만 닫기
-            }
+            dispose();
         });
 
      // 시작 날짜 선택 후 종료 날짜 활성화

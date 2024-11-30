@@ -23,7 +23,7 @@ import javax.swing.TransferHandler; // TransferHandler 클래스 임포트
 import javax.swing.event.ListSelectionEvent; // ListSelectionEvent 클래스 임포트
 import javax.swing.event.ListSelectionListener; // ListSelectionListener 인터페이스 임포트
 
-public class userManage { // userManage 클래스 정의
+public class userManage extends JFrame{ // userManage 클래스 정의
 
     private JFrame frame; // JFrame 객체 선언
     private JTable table; // JTable 객체 선언

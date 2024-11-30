@@ -180,13 +180,13 @@ public class PCroomClientWindow extends JFrame {
                 	time2.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, 
-                            "로그인 실패. 아이디와 비밀번호를 확인하세요.", 
+                            "해당하는 아이디가 없습니다. 다시 입력해주십시오.", 
                             "실패", 
                             JOptionPane.ERROR_MESSAGE);
                 }
                 if (userId != null && !userId.isEmpty()) {
                     // 입력받은 아이디로 처리하는 동작 추가
-                    JOptionPane.showMessageDialog(null, "입력된 아이디: " + userId, "아이디 확인", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "입력된 아이디: " + userId, "아이디 확인", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "아이디를 입력하지 않았습니다.", "알림", JOptionPane.WARNING_MESSAGE);
                 }

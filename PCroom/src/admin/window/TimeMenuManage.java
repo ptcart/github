@@ -252,6 +252,21 @@ public class TimeMenuManage extends JFrame {
             // 요금제 삭제 로직 작성
         });
         getContentPane().add(deleteButton);
+        
+     // 나가기 버튼
+        JButton exitButton = new JButton("나가기");
+
+        // 카드, 현금 버튼의 수평선 오른쪽 끝에 위치 설정
+        exitButton.setBounds(400, 50, buttonWidth, buttonHeight); 
+
+        exitButton.setBackground(new Color(231, 76, 60)); // 빨간색 배경
+        styleButton(exitButton, new Color(231, 76, 60)); // 빨간색
+        exitButton.setFocusPainted(false); // 클릭 시 테두리 비활성화
+        exitButton.addActionListener(e -> {
+            dispose();
+        });
+
+        getContentPane().add(exitButton);
     }
 
 
