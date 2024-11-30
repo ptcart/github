@@ -170,9 +170,6 @@ public class ServerMessage extends JFrame {
         messageUpdateThread.start();
     }
 
-
-
-
     // 대화창에 메시지 추가
     public void appendMessage(String message) {
         chatArea.append(message + "\n");

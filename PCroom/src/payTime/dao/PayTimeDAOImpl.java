@@ -18,10 +18,8 @@ public class PayTimeDAOImpl extends AbstractBaseDAO implements PayTimeDAO {
 
 	public List<PayTimeVO> selectPayTime(PayTimeVO payTimeVO) throws SQLException, ClassNotFoundException {
 		List<PayTimeVO> payList = new ArrayList<PayTimeVO>();
-		//String seatName = SeatVO.getId();
 
 		pstmt = conn.prepareStatement("SELECT * FROM payTime ORDER BY timeId");
-//		pstmt.setString(1, seatName);
 	
 		ResultSet rs = pstmt.executeQuery();
 
@@ -41,11 +39,10 @@ public class PayTimeDAOImpl extends AbstractBaseDAO implements PayTimeDAO {
 			payList.add(_payTimeVO);
 		} // end while
 		rs.close();
-		//System.out.println("DB에서 나온 결과 : " + seatList);
 		return payList;
-	} // end list()
+	} 
 
-	// 시간메뉴 정보 등록 메서드
+	// 시간내역 정보 등록 메서드
 	public void insertPayTime(PayTimeVO payTimeVO) throws SQLException, ClassNotFoundException {
 	    // 1. 현재 payTime 테이블의 레코드 수 확인
 	    int currentCount = 0;
@@ -74,7 +71,7 @@ public class PayTimeDAOImpl extends AbstractBaseDAO implements PayTimeDAO {
 	}
 
 
-	// 시간메뉴 정보 수정 메소드
+	// 시간내역 정보 수정 메소드
 	public void updatePayTime(PayTimeVO payTimeVO) throws SQLException, ClassNotFoundException {
 		pstmt = conn.prepareStatement("UPDATE payTime SET timeNum = ?, payTime = ?, userId = ? WHERE timeId = ?");
 		pstmt.setInt(1, payTimeVO.getTimeNum());
@@ -85,7 +82,7 @@ public class PayTimeDAOImpl extends AbstractBaseDAO implements PayTimeDAO {
 
 	}
 
-	// 시간메뉴 정보 삭제 메소드
+	// 시간내역 정보 삭제 메소드
 	public void deletePayTime(PayTimeVO payTimeVO) throws SQLException, ClassNotFoundException {
 		pstmt = conn.prepareStatement("DELETE FROM payTime WHERE TimeId = ?");
 		pstmt.setInt(1, payTimeVO.getTimeId());

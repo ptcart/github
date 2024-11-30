@@ -183,7 +183,6 @@ public class OpenAddTimeMenu3 extends JFrame {
                 // 콘솔에 결제 완료 메시지와 함께 현재 날짜와 시간을 출력
                 System.out.println(paymentMethod + " 결제 완료: " +
                     "추가 시간 " + formatTime(selectedAddSeconds) + ", 금액 " + selectedCost + "원");
-                //System.out.println("결제 시각: " + formattedDateTime);
 
                 // 안내창 표시
                 JOptionPane.showMessageDialog(this, "결제가 완료되었습니다!", "결제 완료", JOptionPane.INFORMATION_MESSAGE);

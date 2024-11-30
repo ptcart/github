@@ -46,18 +46,12 @@ public class userInfo {
     private Server server;  // Server 객체를 클래스 변수로 선언
 
 
-    /**
-     * Create the application.
-     */
     public userInfo(int seatNum, String name, String gender, String id, int amount, int remainingTime, Server server) {
         this.seatNum = seatNum; // 좌석 번호 저장
         this.server = server;
         initialize(seatNum, name, gender, id, amount, remainingTime);
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize(int seatNum, String name, String gender, String id, int amount, int remainingTime) {
         // Create frame
         frame = new JFrame();
@@ -224,10 +218,6 @@ public class userInfo {
             remainTime1.setUserId(id);
             List<RemainTimeVO> reTime = remainTimeController.listRemainTime(remainTime1);
             
-            // 남은 시간 얻어두고
-            //int remainTime2 = 0;
-            // 사용 금액도 얻어두고
-            //int useMoney2 = 0;
             if (!reTime.isEmpty()) {
             	RemainTimeVO firstTime = reTime.get(0); // 첫 번째 요소를 가져옴
                 // 필요한 정보 사용 예시

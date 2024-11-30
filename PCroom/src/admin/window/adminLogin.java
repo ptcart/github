@@ -37,17 +37,8 @@ public class adminLogin {
     private JPasswordField passwordField;
     static AdminController adminController = new AdminControllerImpl();
     private Server server;  // Server 객체를 클래스 변수로 선언
-    //private Map<String, ClientReceiver> clients; // 클라이언트 목록을 저장할 변수
     
 
-    /**
-     * Launch the application.
-     */
-
-
-    /**
-     * Create the application.
-     */
  // adminLogin 생성자에서 clients를 받도록 수정
     public adminLogin(Server server) {
         //this.clients = clients;
@@ -55,9 +46,6 @@ public class adminLogin {
         initialize();
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 300);
@@ -121,11 +109,9 @@ public class adminLogin {
                 String adId = usernameField.getText();
                 String adPw = new String(passwordField.getPassword());
                 boolean adLogSuccess = false;
-//                String response = client.sendCommand("LOG_ADMIN," + adId + "," + adPw);
                 
                 AdminVO adminVO = new AdminVO();
                 List<AdminVO> adminList = adminController.listAdmin(adminVO);
-//                loginSuccess = "LOGIN_SUCCESS".equals(response.trim());
                 
                 for (AdminVO A : adminList) {
                     // 아이디 비밀번호 둘다 일치할 경우
@@ -151,6 +137,4 @@ public class adminLogin {
             }
         });
     }
-    
-
 }

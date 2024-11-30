@@ -127,34 +127,6 @@ public class orderManage { // userManage 클래스 정의
                 model.addRow(rowData); // 조건에 맞는 데이터 추가
             }
         }
-//        // 리스트 순회하며 테이블에 추가
-//        for (OrderVO ordervo : orderList) {
-//            // LocalDateTime -> String 변환
-//            String orderTimeString = (ordervo.getOrderTime() != null) 
-//                ? ordervo.getOrderTime().format(formatter) 
-//                : "N/A"; // 주문 시간이 없을 경우 기본값 설정
-//            
-//             
-//            if(ordervo.getState() == 0) {
-//            	orderState = "주문 준비";
-//            }
-//            else if(ordervo.getState() == 1) {
-//            	orderState = "주문 완료";
-//            }
-//
-//            // OrderVO 객체에서 필요한 데이터를 가져옴
-//            Object[] rowData = { 
-//                ordervo.getOrderId(),   // 주문번호
-//                orderTimeString,        // 변환된 주문시간
-//                ordervo.getPayment(),   // 결제방식
-//                ordervo.getSeatNum(),   // 좌석번호
-//                orderState      // 주문상태
-//            };
-//            model.addRow(rowData); // 테이블 모델에 행 추가
-//        }
-
-
-
 
         JScrollPane scrollPane = new JScrollPane(table); // 테이블을 스크롤 패널에 추가
         scrollPane.setBounds(29, 85, 577, 307); // 테이블 위치와 크기 설정
@@ -176,22 +148,6 @@ public class orderManage { // userManage 클래스 정의
         searchButton.setBackground(new Color(220, 220, 220)); // 연한 회색
         searchButton.setPreferredSize(new Dimension(80, 25)); // 버튼 크기 설정
         
-        /*
-        // 전체 음식종류 목록 가져오기
-        List<FoodSortVO> foodSortList = foodSortController.listFoodSort(new FoodSortVO());
-
-        // 콤보박스 생성 및 옵션 추가
-        JComboBox<String> searchComboBox = new JComboBox<>();
-        searchComboBox.addItem("전체"); // '전체' 옵션 추가
-
-        // foodSortList에서 각 음식종류 이름을 가져와 콤보박스에 추가
-        for (FoodSortVO foodSort : foodSortList) {
-            searchComboBox.addItem(foodSort.getName());
-        }
-        
-        // 검색 패널에 콤보박스 추가
-        searchPanel.add(searchComboBox);
-         */
         String[] searchOptions = {"전체", "주문번호", "주문시간", "결제방식", "좌석번호", "주문상태"}; // 검색 옵션 배열
         JComboBox<String> searchComboBox = new JComboBox<>(searchOptions); // 콤보박스 생성
         searchPanel.add(searchComboBox); // 검색 패널에 콤보박스 추가
@@ -364,10 +320,7 @@ public class orderManage { // userManage 클래스 정의
                 String orderId = model.getValueAt(selectedRow, 0).toString();
                 order.setOrderId(Integer.parseInt(orderId));
                 order.setState(1);
-                //String sort = model.getValueAt(selectedRow, 1).toString();
-                //String name = model.getValueAt(selectedRow, 2).toString();
-                //String price = model.getValueAt(selectedRow, 3).toString();
-                //String phoneNum = model.getValueAt(selectedRow, 4).toString();
+
                 orderController.modOrder(order);
                
              // 현재 화면 닫기

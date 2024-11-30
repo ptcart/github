@@ -36,7 +36,6 @@ public class MyInfoUI2 extends JFrame {
 	private JTextField textFieldName;
 	private JTextField textFieldPhoneNumber;
 	private JComboBox<String> comboBoxGender;
-	private int seatNum;
     static MemberController memberController = new MemberControllerImpl();
     static SeatController seatController = new SeatControllerImpl();
     static RemainTimeController remainTimeController = new RemainTimeControllerImpl();
@@ -164,8 +163,6 @@ public class MyInfoUI2 extends JFrame {
 						dispose(); // 내 정보 창 닫기						
 				        
 						String userId = textFieldId.getText();
-						// 회원 탈퇴 명령어
-						//client.sendCommand("REMOVE_MEM," + userId + "," + seatNum);
 
 						MemberVO removeMem = new MemberVO();
 		                RemainTimeVO rTime = new RemainTimeVO();
@@ -173,13 +170,8 @@ public class MyInfoUI2 extends JFrame {
 		                
 		                removeMem.setId(userId);
 		                rTime.setUserId(userId);
-		                //_seat.setUserId(null);
-		                //_seat.setSeatNum(Integer.parseInt(parts[2]));
 		                
-		                remainTimeController.removeRemainTime(rTime);
-		                //나중에 seat dao 에서 userId를 찾아서 좌석이 있으면 아이디를 null로 바꾸게끔 해야함
-		                
-		                //seatController.modSeat(_seat);
+		                remainTimeController.removeRemainTime(rTime);		                
 		                memberController.removeMember(removeMem);
 		                userManage uM = new userManage();
 		                uM.showUI();
@@ -190,10 +182,7 @@ public class MyInfoUI2 extends JFrame {
 				btnQuit.setBounds(327, 228, 97, 25); // 세로 길이를 23에서 25로 늘림
 				getContentPane().add(btnQuit);
 	}
-	
-	/**
-	 * Save user info method.
-	 */
+
 	private void saveUserInfo() {
 		String userId = textFieldId.getText();
 		String userPassword = new String(passwordField.getPassword());

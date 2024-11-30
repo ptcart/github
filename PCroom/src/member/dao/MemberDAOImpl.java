@@ -43,11 +43,11 @@ public class MemberDAOImpl extends AbstractBaseDAO implements MemberDAO {
 			_memVO.setGender(Gender);
 			_memVO.setPhoneNum(PhoneNum);
 			memList.add(_memVO);
-		} // end while
+		} 
 		rs.close();
 		//System.out.println("DB에서 나온 결과 : " + memList);
 		return memList;
-	} // end list()
+	} 
 	
 	public List<MemberVO> loginMember() throws SQLException, ClassNotFoundException {
 		List<MemberVO> memList = new ArrayList<MemberVO>();

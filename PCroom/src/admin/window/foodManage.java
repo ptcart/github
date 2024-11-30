@@ -2,7 +2,6 @@ package admin.window; // admin.window 패키지 선언
 
 import java.awt.*; // AWT 클래스 임포트
 import java.awt.event.*; // AWT 이벤트 클래스 임포트
-import java.util.ArrayList; // ArrayList 클래스 임포트
 import java.util.List; // List 인터페이스 임포트
 
 // TransferHandler 클래스 임포트
@@ -17,11 +16,6 @@ import foodMenu.controller.FoodMenuController; // SeatController 인터페이스
 import foodMenu.controller.FoodMenuControllerImpl; // SeatControllerImpl 클래스 임포트
 import foodMenu.vo.FoodMenuVO; // SeatVO 클래스 임포트
 
-import admin.window.RegMemDialog2; // RegMemDialog2 클래스 임포트
-import remainTime.vo.RemainTimeVO; // RemainTimeVO 클래스 임포트
-import member.controller.MemberController; // MemberController 인터페이스 임포트
-import member.controller.MemberControllerImpl; // MemberControllerImpl 클래스 임포트
-import member.vo.MemberVO;
 
 import javax.swing.event.ListSelectionEvent; // ListSelectionEvent 클래스 임포트
 import javax.swing.event.ListSelectionListener; // ListSelectionListener 인터페이스 임포트
@@ -34,7 +28,6 @@ public class foodManage { // userManage 클래스 정의
     private JButton updateButton, deleteButton;  // 수정 및 삭제 버튼 선언
     static FoodSortController foodSortController = new FoodSortControllerImpl(); // 회원 컨트롤러 인스턴스 생성
     static FoodMenuController foodMenuController = new FoodMenuControllerImpl(); // 좌석 컨트롤러 인스턴스 생성
-    //static RemainTimeController remainTimeController = new RemainTimeControllerImpl(); // 남은 시간 컨트롤러 인스턴스 생성
 
     public static void main(String[] args) { // 메인 메서드
         EventQueue.invokeLater(new Runnable() { // 이벤트 큐에 작업 추가
@@ -134,22 +127,6 @@ public class foodManage { // userManage 클래스 정의
         searchButton.setBackground(new Color(220, 220, 220)); // 연한 회색
         searchButton.setPreferredSize(new Dimension(80, 25)); // 버튼 크기 설정
         
-        /*
-        // 전체 음식종류 목록 가져오기
-        List<FoodSortVO> foodSortList = foodSortController.listFoodSort(new FoodSortVO());
-
-        // 콤보박스 생성 및 옵션 추가
-        JComboBox<String> searchComboBox = new JComboBox<>();
-        searchComboBox.addItem("전체"); // '전체' 옵션 추가
-
-        // foodSortList에서 각 음식종류 이름을 가져와 콤보박스에 추가
-        for (FoodSortVO foodSort : foodSortList) {
-            searchComboBox.addItem(foodSort.getName());
-        }
-        
-        // 검색 패널에 콤보박스 추가
-        searchPanel.add(searchComboBox);
-         */
         String[] searchOptions = {"전체", "메뉴번호", "종류", "이름", "가격"}; // 검색 옵션 배열
         JComboBox<String> searchComboBox = new JComboBox<>(searchOptions); // 콤보박스 생성
         searchPanel.add(searchComboBox); // 검색 패널에 콤보박스 추가

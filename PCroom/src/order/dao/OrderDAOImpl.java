@@ -43,7 +43,6 @@ public class OrderDAOImpl extends AbstractBaseDAO implements OrderDAO {
 			orderList.add(_Order);
 		} // end while
 		rs.close();
-		//System.out.println("DB에서 나온 결과 : " + orderList);
 		return orderList;
 	} // end list()
 	
@@ -109,4 +108,4 @@ public class OrderDAOImpl extends AbstractBaseDAO implements OrderDAO {
 		pstmt.executeUpdate();
 	}
 
-}// end class MemberDAOImpl
+}

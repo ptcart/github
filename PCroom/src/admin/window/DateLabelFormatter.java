@@ -11,6 +11,7 @@ import javax.swing.text.DateFormatter;
 class DateLabelFormatter extends DateFormatter {
     private final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
+    
     @Override
     public String valueToString(Object value) throws ParseException {
         if (value != null) {

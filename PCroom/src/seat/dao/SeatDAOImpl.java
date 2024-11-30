@@ -31,11 +31,10 @@ public class SeatDAOImpl extends AbstractBaseDAO implements SeatDAO {
 			_seatVO.setSeatNum(seatNum);
 
 			seatList.add(_seatVO);
-		} // end while
+		} 
 		rs.close();
-		//System.out.println("DB에서 나온 결과 : " + seatList);
 		return seatList;
-	} // end list()
+	} 
 	
 	public List<SeatVO> pickSeat(SeatVO seatVO) throws SQLException, ClassNotFoundException {
 		List<SeatVO> seatList = new ArrayList<SeatVO>();
@@ -62,31 +61,7 @@ public class SeatDAOImpl extends AbstractBaseDAO implements SeatDAO {
 		return seatList;
 	} // end list()
 	
-//	public List<MemberVO> loginMember() throws SQLException, ClassNotFoundException {
-//		List<MemberVO> memList = new ArrayList<MemberVO>();
-//		pstmt = conn.prepareStatement("SELECT * FROM Member");
-//		
-//		
-//		ResultSet rs = pstmt.executeQuery();
-//
-//		while (rs.next()) {
-//			String Id = rs.getString("Id");
-//			String Pw = rs.getString("Pw");
-//			String Name = rs.getString("Name");
-//			String Gender = rs.getString("Gender");
-//			String PhoneNum = rs.getString("PhoneNum");
-//			MemberVO _memVO = new MemberVO();
-//			
-//			_memVO.setId(Id);
-//			_memVO.setPw(Pw);
-//			_memVO.setName(Name);
-//			_memVO.setGender(Gender);
-//			_memVO.setPhoneNum(PhoneNum);
-//			memList.add(_memVO);
-//		} // end while
-//		rs.close();
-//		return memList;
-//	} // end list()
+
 
 	// 좌석 정보 등록 메서드
 	public void insertSeat(SeatVO seatVO) throws SQLException, ClassNotFoundException {

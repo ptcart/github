@@ -145,10 +145,6 @@ public class RegPayTimeDialog extends JDialog {
                 timeMenu.setAddTime(seconds);
                 timeMenu.setCost(Integer.parseInt(cost));
 
-//                FoodSortVO foodsort = new FoodSortVO();
-//                foodsort.setName(payment);
-//                List<FoodSortVO> foodSortList = foodSortController.listFoodSort(foodsort);
-
                 timeMenuController.regTimeMenu(timeMenu);
                 showMessage("요금제를 등록했습니다.");
                 dispose();

@@ -185,10 +185,6 @@ public class TimeMenuManage extends JFrame {
                 return;
             }
 
-            // 버튼 추가 로직
-            // JOptionPane.showMessageDialog(this, "요금제를 추가합니다.", 
-                //"요금제 추가", JOptionPane.INFORMATION_MESSAGE);
-            //System.out.println("요금제 추가 버튼 클릭됨");
             RegPayTimeDialog RPTD = new RegPayTimeDialog(paymentMethod);
             dispose();
             RPTD.setVisible(true);
@@ -215,11 +211,6 @@ public class TimeMenuManage extends JFrame {
                     .orElse(null);
 
                 if (selectedMenu != null) {
-                    // 선택된 메뉴 정보 출력 (디버그용, 실제 로직에 맞게 활용)
-//                    System.out.println("선택된 시간 메뉴: " + selectedMenu.getTimeNum());
-//                    System.out.println("선택된 시간: " + formatTime(selectedMenu.getAddTime()));
-//                    System.out.println("선택된 금액: " + selectedMenu.getCost() + "원");
-
                     // 요금제 수정 다이얼로그 열기
                     PayTimeinfo editDialog = new PayTimeinfo(selectedMenu.getPayment(),
                                                              selectedMenu.getTimeNum(),

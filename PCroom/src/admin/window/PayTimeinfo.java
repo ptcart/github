@@ -160,6 +160,7 @@ public class PayTimeinfo extends JDialog {
     }
 
 
+    
     private void showMessage(String msg) {
         JOptionPane.showMessageDialog(this, msg, "메시지 박스", JOptionPane.INFORMATION_MESSAGE);
     }

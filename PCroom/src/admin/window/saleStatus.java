@@ -165,36 +165,12 @@ public class saleStatus extends JFrame {
         pieChartPanel = new XChartPanel<>(pieChart);
         pieChartPanel.setBounds(0, 0, 350, 300);
         centerPanel.add(pieChartPanel);
-
-        
-//     // 1월부터 12월까지의 데이터 예시
-//        List<String> barXData = Arrays.asList(
-//            "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06",
-//            "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12"
-//        );
-//
-//        List<Integer> barYData = Arrays.asList(
-//            120000, 130000, 140000, 110000, 125000, 135000, 
-//            145000, 150000, 155000, 160000, 170000, 180000
-//        );
-//
-//        
-//        
-//        CategoryChart barChart = createBarChart("월별 매출", "월", "매출", barXData, barYData);
-//        XChartPanel<CategoryChart> barChartPanel = new XChartPanel<>(barChart);
-//        barChartPanel.setBounds(360, 0, 404, 300);
-//        centerPanel.add(barChartPanel);
         
         endDatePicker.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Date startDate = (Date) startDatePicker.getModel().getValue();
-                Date endDate = (Date) endDatePicker.getModel().getValue();
-                
-//                LocalDate startLocalDate = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//                LocalDate endLocalDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            
-                
+                Date endDate = (Date) endDatePicker.getModel().getValue();                
                 
                 Map<LocalDate, Integer> dailyCosts = new TreeMap<>(); // 날짜별 비용 저장 (TreeMap으로 정렬된 상태 유지)
                 if (startDate == null) {
@@ -280,10 +256,6 @@ public class saleStatus extends JFrame {
                         // 총 비용 계산
                         int totalTimeCost = timeCardCost + timeMoneyCost;
                         
-                        
-                     // 날짜별 비용을 저장할 TreeMap 생성
-                        //Map<LocalDate, Integer> dailyCosts = new TreeMap<>();
-
                         // 주문 목록 조회
                         OrderVO order = new OrderVO();
                         List<OrderVO> listOrder = orderController.listOrder(order);
@@ -341,8 +313,6 @@ public class saleStatus extends JFrame {
                         }
 
 
-
-        
                         // 총 비용 계산
                         int totalFoodCost = foodCardCost + foodCashCost;
 
@@ -371,7 +341,6 @@ public class saleStatus extends JFrame {
                      // 기존 파이 차트 제거
                         if (pieChartPanel != null) {
                             centerPanel.remove(pieChartPanel); // 기존 차트 패널이 null이 아니면 삭제
-                            //endDatePicker.getModel().setSelected(false); // 종료 날짜 초기화
                         }
                         
                      // 새로운 파이 차트 데이터로 업데이트
@@ -524,33 +493,19 @@ public class saleStatus extends JFrame {
 
                             barChartPanel = new XChartPanel<>(barChart);
                             barChartPanel.setBounds(360, 0, 404, 300);
-                            centerPanel.add(barChartPanel);
-                            
-                            
+                            centerPanel.add(barChartPanel);                          
                         }
 
                         // 패널 다시 그리기
                         centerPanel.revalidate();
                         centerPanel.repaint();
-
                     }
                 }
-             
-
-            
-
             }
         });
 
 
         setVisible(true);
-        
-     
-
-
-
-        
-
         
 
         // 하단 금액 합산 영역

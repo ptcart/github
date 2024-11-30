@@ -46,11 +46,10 @@ public class TimeMenuDAOImpl extends AbstractBaseDAO implements TimeMenuDAO {
 			_timeMenuVO.setCost(cost);
 
 			timeList.add(_timeMenuVO);
-		} // end while
+		} 
 		rs.close();
-		//System.out.println("DB에서 나온 결과 : " + seatList);
 		return timeList;
-	} // end list()
+	} 
 	
 	public List<TimeMenuVO> selectTimeCost(TimeMenuVO timeMenuVO) throws SQLException, ClassNotFoundException {
 		List<TimeMenuVO> timeList = new ArrayList<TimeMenuVO>();
@@ -117,9 +116,5 @@ public class TimeMenuDAOImpl extends AbstractBaseDAO implements TimeMenuDAO {
 		pstmt.executeUpdate();
 
 
-	}
-	
-	
-
-	
-}// end class MemberDAOImpl
+	}	
+}

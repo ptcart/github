@@ -14,10 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import main.AdminUI;
 import member.controller.MemberController;
 import member.controller.MemberControllerImpl;
 import member.vo.MemberVO;
@@ -51,10 +49,6 @@ import payTime.vo.PayTimeVO;
 import payTime.controller.PayTimeController;
 import payTime.controller.PayTimeControllerImpl;
 
-
-
-
-
 public class Server {
 
     private ServerSocket serverSocket;
@@ -70,7 +64,6 @@ public class Server {
     static AdminController AdminController = new AdminControllerImpl();
     static PayTimeController payTimeController = new PayTimeControllerImpl();
     
-    private static Server server;  // Server 객체를 클래스 변수로 선언
     private static String latestRequest;  // 최근 요청을 저장할 변수
     private static final Map<String, ClientReceiver> clients = new HashMap<>();
     private static Map<Integer, String> seatClientMap = new HashMap<>();
@@ -126,10 +119,6 @@ public class Server {
         }
     }
     
-	    
-    
-    
-
     public static class ClientReceiver extends Thread {
         private Socket clientSocket;
         private DataInputStream in;
@@ -167,7 +156,6 @@ public class Server {
                             	latestRequest = request;
                                 String message = request.substring(4); // "MSG|" 이후의 내용
                                 // 메시지를 모든 클라이언트에게 전송
-                                //sendMessageToAllClients(message);
                             } else { // 명령어 처리
                                 String[] parts = request.split(",");
                                 String command = parts[0];
@@ -263,7 +251,7 @@ public class Server {
                 out.flush();
                 break;
                 
-                
+            // 로그인 전 요금제 추가(아이디 확인)    
             case "TIME_MEM":
                 boolean loginSuccess1 = false;
                 MemberVO member1 = new MemberVO();
@@ -290,7 +278,7 @@ public class Server {
                 out.flush();
                 break;
                 
-                
+            // 아이디 중복 체크    
             case "CHECK_ID":
                 String idToCheck = parts[1];  // 클라이언트에서 보낸 ID
                 
@@ -315,6 +303,7 @@ public class Server {
                 out.flush();
                 break;
 
+            // 회원 로그인
             case "LOG_ADMIN":
                 boolean adLogSuccess = false;
                 AdminVO admin = new AdminVO();
@@ -343,7 +332,7 @@ public class Server {
                 out.flush();
                 break;
 
-            // 회원가입 명령어
+            // 회원가입
             case "ADD_MEM":
                 MemberVO member11 = new MemberVO();
                 member11.setId(parts[1]);
@@ -364,7 +353,7 @@ public class Server {
                 out.flush();
                 break;
 
-              // 회원 정보 찾기 명령어
+              // 회원 정보 찾기
               case "GET_MEMS":
                  MemberVO searchMember = new MemberVO();
                  searchMember.setId(parts[1]);
@@ -376,7 +365,7 @@ public class Server {
                   out.writeUTF("END");
                   break;
                 
-              // 회원 수정 명령어
+              // 회원 수정
              case "MOD_MEM":
                 MemberVO modMem = new MemberVO();
                 modMem.setId(parts[1]);
@@ -388,7 +377,7 @@ public class Server {
                 out.writeUTF("END");
                 break;
                 
-             // 회원 탈퇴 명령어
+             // 회원 탈퇴
              case "REMOVE_MEM":
                 MemberVO removeMem = new MemberVO();
                 RemainTimeVO rTime = new RemainTimeVO();
@@ -406,7 +395,7 @@ public class Server {
                 out.writeUTF("END");
                 break;
                 
-            // 좌석 선택 명령어
+            // 좌석 선택
             case "SEAT_MEM":
                 SeatVO seat = new SeatVO();
                 seat.setUserId(parts[1]);
@@ -452,7 +441,7 @@ public class Server {
                 out.flush();
                 break;
                 
-             // 시간메뉴 열어주는 명령어
+             // 시간메뉴 정보
             case "TIME_MENU":
                 //System.out.println("시간메뉴 도착");
                 TimeMenuVO timeMenuVO = new TimeMenuVO();
@@ -469,7 +458,7 @@ public class Server {
                 out.flush();
                 break;
                 
-            // 사용자 남은시간 수정 명령어
+            // 사용자 남은시간 수정
             case "MOD_TIME":
             	RemainTimeVO remainTime3 = new RemainTimeVO();
             	remainTime3.setUserId(parts[1]);
@@ -483,7 +472,6 @@ public class Server {
             	
             	remainTime3.setRemainTime(Integer.valueOf(parts[2]));
             	int result = 0;
-//            	remainTime3.setRemainTime(seconds);
             	if(Math.abs(seconds - remainTime3.getRemainTime()) < 100) {
             		remainTime3.setRemainTime(Integer.valueOf(parts[2]));
             	}
@@ -509,7 +497,7 @@ public class Server {
           	    out.flush();
           	    break;
           	    
-          	// 사용자 남은시간 수정 명령어
+          	// 사용자 남은시간 수정
             case "MOD_TIME1":
             	RemainTimeVO remainTime31 = new RemainTimeVO();
             	remainTime31.setUserId(parts[1]);
@@ -525,7 +513,7 @@ public class Server {
           	    break;
                 
           	    
-          	// 사용자 남은시간 수정 명령어
+          	// 사용자 남은시간 수정
             case "MOD_TIME_SIMPLE":
             	 System.out.println("출력됨~");
             	RemainTimeVO remainTime4 = new RemainTimeVO();
@@ -542,8 +530,6 @@ public class Server {
                     remainTime11 = firstRemainTime.getRemainTime();  // 남은 시간 가져오기
                     System.out.println("출력된 시간 : "+remainTime11);
                     
-                    // 이후 로직에서 remainTime을 사용
-                    // remainTimeController.modRemainTime(remainTime4);
                 }
                 int totalTime = remainTime4.getRemainTime() + remainTime11; 
                 System.out.println("더한 시간 : " +totalTime);
@@ -561,7 +547,6 @@ public class Server {
                 
                 if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
                     FoodMenu.setName(parts[1]);
-                    //FoodSort.setName(parts[1]);
                 }
                 
                 List<FoodMenuVO> fm = foodMenuController.listFoodMenu(FoodMenu);
@@ -666,274 +651,7 @@ public class Server {
                 
                 
                 out.writeUTF("END");
-                break;
-
-            	
+                break;      	
         }
-    }
-
-
-
-	
-
-
-
-	
-
-	
+    }	
 }
-    
-// // reTime 리스트를 처리하는 메서드
-//    private static void handleRemainTimes(List<RemainTimeVO> reTime) {
-//
-//    	for (RemainTimeVO time : reTime) {
-//            // 예: 사용자 ID 및 남은 시간 출력
-//            System.out.println("User ID: " + time.getUserId());
-//            System.out.println("Remaining Time: " + time.getRemainTime());
-//        }
-//    }
-
-
-//            
-//            System.out.println("Registering member: " + member1); // 디버깅 출력
-//            memberController.regMember(member1);
-            
-//            out.println("END");
-//            break;
-    		
-    	// car 명령어
-//        case "ADD_CAR":
-            //CarVO car = new CarVO();
-            //car.setCarNumber(parts[1]);
-           // car.setCarName(parts[2]);
-            //car.setCarColor(parts[3]);
-            //car.setCarSize(Integer.parseInt(parts[4]));
-            //car.setCarMaker(parts[5]);
-            //new CarControllerImpl().regCarInfo(car);
-            // out.println("END");
-            // //out.println("Car added");
-            // break;
-//        case "GET_CARS":
-            //CarVO searchCar = new CarVO();
-            /* 
-            if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
-                searchCar.setCarNumber(parts[1]);
-            }
-            System.out.println("Searching for car with number: " + searchCar.getCarNumber());
-            List<CarVO> cars = carController.listCarInfo(searchCar);
-            for (CarVO c : cars) {
-                out.println(c.getCarNumber() + "," + c.getCarName() + "," + c.getCarColor() + "," + c.getCarSize() + "," + c.getCarMaker());
-            }
-                */
-            // out.println("END");
-            // System.out.println("Processed GET_CARS command, sent " + cars.size() + " cars to client.");
-            // break;
-//        case "MOD_CAR":
-            //CarVO modCar = new CarVO();
-            //modCar.setCarNumber(parts[1]);
-            //modCar.setCarName(parts[2]);
-            //modCar.setCarColor(parts[3]);
-           // modCar.setCarSize(Integer.parseInt(parts[4]));
-           // modCar.setCarMaker(parts[5]);
-            //carController.modCarInfo(modCar);
-            // out.println("END");
-            // //out.println("Car modified");
-            // break;
-//        case "REMOVE_CAR":
-            //CarVO remCar = new CarVO();
-            //remCar.setCarNumber(parts[1]);
-           // carController.removeCarInfo(remCar);
-           // out.println("END");
-            //out.println("Car removed");
-            // break;                    
-            
-        // member 명령어
-        //case "ADD_MEM":
-            //MemberVO member = new MemberVO();
-           // member.setMemId(parts[1]);
-           // member.setMemPassword(parts[2]);
-           // member.setMemName(parts[3]);
-          //  member.setMemAddress(parts[4]);
-          //  member.setMemPhoneNum(parts[5]);
-            
-            //System.out.println("Registering member: " + member); // 디버깅 출력
-            //memberController.regMember(member);
-            
-            // out.println("END");
-            // break;
-            
-//        case "GET_MEMS":
-           // MemberVO searchMember = new MemberVO();
-            // if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
-            //     searchMember.setMemName(parts[1]);
-            // }
-            // System.out.println("Searching for member with Name: " + searchMember.getMemName());
-            // List<MemberVO> members = memberController.listMember(searchMember);
-            // for (MemberVO m : members) {
-            //     out.println(m.getMemId() + "," + m.getMemPassword() + "," + m.getMemName() + "," + m.getMemAddress() + "," + m.getMemPhoneNum());
-            // }
-            // out.println("END");
-            // System.out.println("Processed GET_MEMS command, sent " + members.size() + " members to client.");
-            // break;
-//            
-//        case "MOD_MEM":
-            // MemberVO modMem = new MemberVO();
-            // modMem.setMemId(parts[1]);
-            // modMem.setMemPassword(parts[2]);
-            // modMem.setMemName(parts[3]);
-            // modMem.setMemAddress(parts[4]);
-            // modMem.setMemPhoneNum(parts[5]);
-            // memberController.modMember(modMem);
-            // out.println("END");
-            //out.println("Car modified");
-            // break;
-            
-//        case "REMOVE_MEM":
-            // MemberVO remMem = new MemberVO();
-            // remMem.setMemId(parts[1]);
-            // memberController.removeMember(remMem);
-            // out.println("END");
-            // //out.println("Car removed");
-            // break;
-            
-//        default:
-            // out.println("Invalid command");
-            // break;
-            
-        // 예약 명령어
-//        case "ADD_RES":
-        	// System.out.println("잘나옴");
-            // ResVO res = new ResVO();
-            // res.setResNumber(parts[1]);
-            // res.setResCarNumber(parts[2]);
-            // res.setResDate(parts[3]);
-            // res.setUseBeginDate(parts[4]);
-            // res.setReturnDate(parts[5]);
-            // res.setResUserId(parts[6]);
-            // res.setResCarMoney(parts[7]);
-            // res.setResInsure(parts[8]);
-            
-            // resController.regResInfo(res);
-            
-            // PayVO pay = new PayVO();
-            // pay.setPayNumber(parts[1]);
-            // pay.setPayResNumber(parts[1]);
-            // pay.setPayCarNumber(parts[2]);
-            // pay.setPayUserId(parts[6]);
-            // pay.setPayMoney(Integer.parseInt(parts[7]));
-            // pay.setPayCheck(Integer.parseInt("0")); // 0 : 결제 대기 하기위해서
-
-            // payController.regPayInfo(pay);
-            // out.println("END");
-            // //out.println("Res added");
-            //break;
-            
-//        case "GET_RES":
-            // ResVO searchRes = new ResVO();
-            // if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
-            // 	searchRes.setResNumber(parts[1]);
-            // }
-            // System.out.println("Searching for member with Name: " + searchRes.getResNumber());
-            // List<ResVO> res1 = resController.listResInfo(searchRes);
-            // for (ResVO r : res1) {
-            //     out.println(r.getResNumber() + "," + r.getResCarNumber() + "," + r.getResDate() + "," + r.getUseBeginDate() + "," + r.getReturnDate()+ "," + r.getResUserId()+ "," + r.getResCarMoney() + "," + r.getResInsure());
-            // }
-            // out.println("END");
-            // System.out.println("Processed GET_RES command, sent " + res1.size() + " res to client.");
-            // break;
-            
-//        case "MOD_RES":
-        	// ResVO modRes = new ResVO();
-            // modRes.setResNumber(parts[1]);
-            // modRes.setResCarNumber(parts[2]);
-            // modRes.setResDate(parts[3]);
-            // modRes.setUseBeginDate(parts[4]);
-            // modRes.setReturnDate(parts[5]);
-            // modRes.setResUserId(parts[6]);
-            // modRes.setResCarMoney(parts[7]);
-            // modRes.setResInsure(parts[8]);
-            // resController.modResInfo(modRes);
-            // out.println("END");
-            // //out.println("Car modified");
-            // break;
-            
-//        case "MOD_RES_INSURE":
-        	// ResVO modInsure = new ResVO();
-        	// modInsure.setResNumber(parts[1]);
-        	// modInsure.setResInsure(parts[2]);
-            // resController.modInsureInfo(modInsure);
-            // out.println("END");
-            // //out.println("Car modified");
-            // break;
-            
-//        case "REMOVE_RES":
-        	// PayVO remPay = new PayVO();
-        	// remPay.setPayNumber(parts[1]);
-        	// payController.cancelPayInfo(remPay);
-        	
-        	// ResVO remRes = new ResVO();
-            // remRes.setResNumber(parts[1]);
-            // resController.cancelResInfo(remRes);
-            // out.println("END");
-            // break;
-            
-//        case "GET_PAY":
-        	// PayVO searchPay = new PayVO();
-            // if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
-            // 	searchPay.setPayNumber(parts[1]);
-            // }
-            // System.out.println("Searching for pay with Number: " + searchPay.getPayNumber());
-            // List<PayVO> pay1 = payController.listPayInfo(searchPay);
-            // for (PayVO p : pay1) {
-            //     out.println(p.getPayNumber() + "," + p.getPayResNumber() + "," + p.getPayCarNumber() + "," + p.getPayUserId() + "," + p.getPayMoney()+ "," + p.getPayCheck());
-            // }	
-            // out.println("END");
-            // System.out.println("Processed GET_PAY command, sent " + pay1.size() + " pay to client.");
-            // break;
-            
-//        case "CONTROLL_PAY":
-        	// System.out.println("확인됬어~");
-        	// PayVO ControllPay = new PayVO();
-        	// ControllPay.setPayNumber(parts[1]);
-        	// //CompPay.setPayResNumber(parts[2]);
-        	// ControllPay.setPayCarNumber(parts[2]);
-        	// ControllPay.setPayUserId(parts[3]);
-        	// ControllPay.setPayMoney(Integer.parseInt(parts[4]));
-        	// ControllPay.setPayCheck(Integer.parseInt(parts[5]));
-        	
-        	// payController.modPayInfo(ControllPay);
-        	// out.println("END");
-        	// break;
-
-//        case "GET_COMPPAY":
-        	// PayVO compPay = new PayVO();
-            // if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
-            // 	compPay.setPayNumber(parts[1]);
-            // }
-            // System.out.println("Searching for pay with Number: " + compPay.getPayNumber());
-            // List<PayVO> pay2 = payController.listCompPayInfo(compPay);
-            // for (PayVO p : pay2) {
-            //     out.println(p.getPayNumber() + "," + p.getPayResNumber() + "," + p.getPayCarNumber() + "," + p.getPayUserId() + "," + p.getPayMoney()+ "," + p.getPayCheck());
-            // }	
-            // out.println("END");
-            // System.out.println("Processed GET_COMPPAY command, sent " + pay2.size() + " pay to client.");
-            // break;
-            
-//        case "GET_CANCLEPAY":
-        	// PayVO canclePay = new PayVO();
-            // if (parts.length > 1 && parts[1] != null && !parts[1].isEmpty()) {
-            // 	canclePay.setPayNumber(parts[1]);
-            // }
-            // System.out.println("Searching for pay with Number: " + canclePay.getPayNumber());
-            // List<PayVO> pay3 = payController.listCanclePayInfo(canclePay);
-            // for (PayVO p : pay3) {
-            //     out.println(p.getPayNumber() + "," + p.getPayResNumber() + "," + p.getPayCarNumber() + "," + p.getPayUserId() + "," + p.getPayMoney()+ "," + p.getPayCheck());
-            // }	
-            // out.println("END");
-            // System.out.println("Processed GET_COMPPAY command, sent " + pay3.size() + " pay to client.");
-            // break;
-        	
-
-
-
-    

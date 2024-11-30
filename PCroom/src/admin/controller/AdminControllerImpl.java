@@ -57,5 +57,4 @@ public class AdminControllerImpl extends AbstractBaseController implements Admin
 		}
 
 	}
-
 }

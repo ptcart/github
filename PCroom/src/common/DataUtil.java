@@ -8,5 +8,4 @@ public class DataUtil {
 	public static void decodeData(String data) {
 		System.out.println("\n" + data + "를 복호화합니다.");
 	}
-
 }

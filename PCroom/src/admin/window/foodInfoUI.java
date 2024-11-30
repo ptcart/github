@@ -1,12 +1,9 @@
 package admin.window;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
@@ -16,26 +13,18 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
 import foodMenu.controller.FoodMenuController;
 import foodMenu.controller.FoodMenuControllerImpl;
 import foodMenu.vo.FoodMenuVO;
 import foodSort.vo.FoodSortVO;
 import foodSort.controller.FoodSortController;
 import foodSort.controller.FoodSortControllerImpl;
-import main.PCroomClientWindow;
 import member.controller.MemberController;
 import member.controller.MemberControllerImpl;
-import member.vo.MemberVO;
-import chatNetwork.Client;
 import remainTime.controller.RemainTimeController;
 import remainTime.controller.RemainTimeControllerImpl;
-import remainTime.vo.RemainTimeVO;
 import seat.controller.SeatController;
 import seat.controller.SeatControllerImpl;
-import seat.vo.SeatVO;
 
 public class foodInfoUI extends JFrame {
 
@@ -50,22 +39,10 @@ public class foodInfoUI extends JFrame {
     static FoodMenuController foodMenuController = new FoodMenuControllerImpl();
     static FoodSortController foodSortController = new FoodSortControllerImpl();
 
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the application.
-	 */
-    
-    //(menuId, sort, name, price, foodImage);
 	public foodInfoUI(String menuId, String sort, String name, int price, String foodImage) {
 		initialize(menuId, sort, name, price, foodImage);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize(String menuId, String sort, String name, int price, String foodImage) {
 		setTitle("메뉴 정보");
 		setBounds(100, 100, 450, 300);
@@ -199,10 +176,7 @@ public class foodInfoUI extends JFrame {
 		getContentPane().add(btnCancel);
 		
 	}
-	
-	/**
-	 * Save user info method.
-	 */
+
 	private void saveUserInfo() {
 		String foodNum = textFieldId.getText();
 		String foodSort = (String) comboBoxSort.getSelectedItem();

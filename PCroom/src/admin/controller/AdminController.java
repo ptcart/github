@@ -16,6 +16,7 @@ public interface AdminController {
 	
 	public void removeAdmin(AdminVO adminVO) ;
 
+	
 }
 
 

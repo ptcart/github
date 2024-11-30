@@ -5,18 +5,13 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner; // 네트워크 소켓 통신을 위한 Socket 클래스를 임포트
 import java.util.UUID;
-
 import javax.swing.SwingUtilities;
-
-import timeMenu.vo.TimeMenuVO;
 
 public class Client {
 	private Socket socket; // 서버와 통신을 위한 소켓
     private DataOutputStream out; // 서버로 데이터를 전송하는 출력 스트림
     private DataInputStream in; // 서버로부터 데이터를 받기 위한 입력 스트림   	
-    private PrintWriter writer;
     private String clientId; // 클라이언트 고유 ID
     String msg;
     
@@ -47,16 +42,9 @@ public class Client {
  
    public String sendCommand(String command) { // 서버로 명령어를 전송하고 응답을 받는 메소드
 	    try {
-	        System.out.println("Sending command: " + command); // 전송할 명령어 디버깅 출력
+	        //System.out.println("Sending command: " + command); // 전송할 명령어 디버깅 출력
 	        out.writeUTF(command); // 서버로 명령어 전송
-	        out.flush(); // 스트림 강제 비우기
-	        
-//	     // 명령어가 "MSG_REQUEST"라면 메시지를 수신할 준비를 한다
-//	        if ("MSG_REQUEST".equals(command)) {
-//	        	System.out.println("여기 들어왔다");
-//	            //receiveMessages(); // 명령어에 맞춰 메시지를 수신하는 메서드 호출
-//	            
-//	        }
+	        out.flush(); // 스트림 강제 비우기	        
 	        
 	        StringBuilder response = new StringBuilder(); // 서버로부터 받은 응답을 저장할 StringBuilder
 	        while (true) {
@@ -75,12 +63,7 @@ public class Client {
 	            }
 	            else if (line.startsWith("CHECK_OK")) {
 	                break;
-	            }
-//	            else if (line.startsWith("MSG_REQUEST")){
-//	            	System.out.println("여기 들어왔다");
-//	            	receiveMessages();
-//	            }
-	            
+	            }	            
 	        }  
 	        return response.toString().trim(); // 응답 문자열 반환
 	    } catch (IOException e) {
@@ -180,24 +163,6 @@ public class Client {
 	    // UI 업데이트 코드 (예: 채팅 창에 메시지 추가)
 	    System.out.println("UI 업데이트: " + message);
 	    });
-	}
-
-//	// 서버에서 연결된 클라이언트에게 메시지 전송
-//	public void broadcastMessage(String message) {
-//	    synchronized (clientHandlers) {
-//	        for (ClientHandler handler : clientHandlers) {
-//	            try {
-//	                handler.out.writeUTF(message); // 클라이언트로 메시지 전송
-//	                handler.out.flush();
-//	            } catch (IOException e) {
-//	                System.err.println("[브로드캐스트 실패] " + e.getMessage());
-//	            }
-//	        }
-//	    }
-//	}
-
-   
-
-	
+	}	
 }
 

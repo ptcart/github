@@ -284,4 +284,5 @@ public class SeatSelection {
     public void setVisible(boolean visible) {
         frame.setVisible(visible);
     }
+    
 }

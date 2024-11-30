@@ -64,25 +64,7 @@ public class FoodMenuUI {
     private String[] allImagePaths;
     private String[] allFoodSort;
 
-    /**
-     * Launch the application.
-     */
-    // public static void main(String[] args) {
-    // EventQueue.invokeLater(new Runnable() { // 이벤트 큐를 사용하여 애플리케이션 실행
-    // public void run() {
-    // try {
-    // FoodMenuUI window = new FoodMenuUI(client); // FoodMenuUI 객체 생성
-    // window.frame.setVisible(true); // 프레임을 보이게 설정
-    // } catch (Exception e) { // 예외 처리
-    // e.printStackTrace(); // 예외 출력
-    // }
-    // }
-    // });
-    // }
 
-    /**
-     * Create the application.
-     */
     public FoodMenuUI(Client client, int seatNumber) {
         cartItems = new ArrayList<>(); // 장바구니 아이템 리스트 초기화
         itemQuantities = new HashMap<>(); // 아이템 수량 해시맵 초기화
@@ -91,9 +73,7 @@ public class FoodMenuUI {
         initialize(); // 초기화 메서드 호출
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
+ 
     private void initialize() {
         frame = new JFrame(); // 프레임 객체 생성
         frame.setBounds(100, 100, 1240, 685); // 프레임 크기 및 위치 설정
@@ -121,9 +101,6 @@ public class FoodMenuUI {
         cartScrollPane.getHorizontalScrollBar().setUI(new CustomScrollBarUI());
     }
 
-    /**
-     * Update local data arrays based on the parsed response.
-     */
     private void updateLocalData() {
         int size = foodMenuList.size();
         allFoodItems = new String[size];
@@ -145,9 +122,6 @@ public class FoodMenuUI {
         
     }
 
-    /**
-     * Initialize the header panel.
-     */
     private void initHeaderPanel() {
         JPanel headerPanel = new JPanel(); // 헤더 패널 생성
         headerPanel.setBounds(0, 0, 1240, 50); // 헤더 패널 크기 및 위치 설정
@@ -175,9 +149,6 @@ public class FoodMenuUI {
         frame.getContentPane().add(headerPanel); // 프레임에 헤더 패널 추가
     }
 
-    /**
-     * Initialize the menu type panel.
-     */
     private void initMenuTypePanel() {
         JPanel menuTypePanel = new JPanel(); // 메뉴 타입 패널 생성
         menuTypePanel.setBounds(0, 50, 980, 50); // 메뉴 타입 패널 크기 및 위치 설정
@@ -225,9 +196,6 @@ public class FoodMenuUI {
         frame.getContentPane().add(menuTypePanel); // 프레임에 메뉴 타입 패널 추가
     }
 
-    /**
-     * Initialize the food panel.
-     */
     private void initFoodPanel() {
         foodPanel = new JPanel(); // 음식 패널 생성
         foodPanel.setLayout(null); // 레이아웃 매니저 비활성화 (절대 위치 사용)
@@ -245,9 +213,6 @@ public class FoodMenuUI {
         }
     }
 
-    /**
-     * Update the food panel based on the selected menu type.
-     */
     private void updateFoodPanel(String menuType) {
         foodPanel.removeAll(); // 음식 패널의 모든 컴포넌트 제거
 
@@ -361,10 +326,7 @@ public class FoodMenuUI {
             foodPanel.add(itemPanel); // 음식 패널에 아이템 패널 추가
         }
     }
-
-    /**
-     * Initialize the cart panel.
-     */
+    
     private void initCartPanel() {
         cartPanel = new JPanel(); // 장바구니 패널 생성
         cartPanel.setBounds(980, 50, 246, 598); // 장바구니 패널 크기 및 위치 설정
@@ -594,7 +556,6 @@ public class FoodMenuUI {
         }
         System.out.println("주문 처리 중..."); // 주문 처리 중 메시지 출력 / 결제방식 + 좌석 + 주문상태
         client.sendCommand("FOOD_ORDER," + selectedPaymentMethod + "," + seatNumber + "," + state);
-        //String response4 = client.sendCommand("FOOD_ORDER,");
         
         // 주문한 항목과 수량을 출력
         StringBuilder orderSummary = new StringBuilder("주문 내역:\n");
@@ -604,7 +565,6 @@ public class FoodMenuUI {
             // 주문 상세 명령어 보냄 /  + 좌석 + 주문상태
             client.sendCommand("FOOD_ORDER_DETAIL," + item + "," + quantity);
         }
-        //System.out.println(orderSummary.toString()); // 콘솔에 주문 내역 출력
         
         // 주문 내역을 사용자에게도 보여주기 위해 메시지 박스에 출력
         JOptionPane.showMessageDialog(frame, 

@@ -23,17 +23,12 @@ public class OpenAddTimeMenu2 extends JFrame {
     //private int remainingSeconds = 0; // 남은 시간 (초)
     private int useMoney = 0; // 사용 금액
     private int remainingSeconds;
-    private JTextField textFieldRemainingTime; // 남은 시간 표시 필드
-    private JTextField textFieldUsageFee; // 사용 금액 표시 필드
+
     private Client client; // 서버와의 통신 객체
     private List<TimeMenuVO> timeMenuList; // 클래스 멤버 변수로 선언
     
-    public OpenAddTimeMenu2(String userId, Client client) { // int remainingSeconds, int useMoney, JTextField textFieldRemainingTime, JTextField textFieldUsageFee, 
+    public OpenAddTimeMenu2(String userId, Client client) {
     	this.userId = userId;
-//    	this.remainingSeconds = remainingSeconds;
-//        this.useMoney = useMoney;
-//        this.textFieldRemainingTime = textFieldRemainingTime;
-//        this.textFieldUsageFee = textFieldUsageFee;
         this.client = client;
         
         setTitle("시간 추가");

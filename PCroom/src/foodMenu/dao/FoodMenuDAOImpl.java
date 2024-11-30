@@ -106,7 +106,7 @@ public class FoodMenuDAOImpl extends AbstractBaseDAO implements FoodMenuDAO {
 	}
 
 
-	// 회원 정보 등록 메서드
+	// 음식 정보 등록 메서드
 	public void insertFoodMenu(FoodMenuVO foodMenuVO) throws SQLException, ClassNotFoundException {
 		
 		pstmt = conn.prepareStatement("INSERT INTO foodMenu (MenuId, Sort, Name, Price, ImagePath) VALUES (?, ?, ?, ?, ?)");
@@ -119,7 +119,7 @@ public class FoodMenuDAOImpl extends AbstractBaseDAO implements FoodMenuDAO {
 		pstmt.executeUpdate();
 	} // end insertMember()
 
-	// 회원 정보 수정 메소드
+	// 음식 정보 수정 메소드
 	public void updateFoodMenu(FoodMenuVO foodMenuVO) throws SQLException, ClassNotFoundException {
 		pstmt = conn.prepareStatement("UPDATE foodMenu SET Sort = ?, Name = ?, Price = ?, ImagePath = ? WHERE MenuId = ?");
 		pstmt.setString(1, foodMenuVO.getSort());
@@ -133,11 +133,11 @@ public class FoodMenuDAOImpl extends AbstractBaseDAO implements FoodMenuDAO {
 
 	}
 
-	// 회원 정보 삭제 메소드
+	// 음식 정보 삭제 메소드
 	public void deleteFoodMenu(FoodMenuVO foodMenuVO) throws SQLException, ClassNotFoundException {
 		pstmt = conn.prepareStatement("DELETE FROM foodMenu WHERE MenuId = ?");
 		pstmt.setString(1, foodMenuVO.getMenuId());
 		pstmt.executeUpdate();
 	}
 
-}// end class MemberDAOImpl
+}

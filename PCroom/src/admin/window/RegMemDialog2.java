@@ -28,6 +28,7 @@ public class RegMemDialog2 extends JDialog {
     static MemberController memberController = new MemberControllerImpl();
     static RemainTimeController remainTimeController = new RemainTimeControllerImpl();
 
+    
     public RegMemDialog2() {
         initialize();
     }
@@ -178,7 +179,6 @@ public class RegMemDialog2 extends JDialog {
                 member.setGender(gender);
                 member.setPhoneNum(phoneNum);
 
-                //System.out.println("Registering member: " + member1); // 디버깅 출력
                 memberController.regMember(member);
                 
                 RemainTimeVO remainTime = new RemainTimeVO();

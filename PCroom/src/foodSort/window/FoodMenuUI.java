@@ -58,25 +58,8 @@ public class FoodMenuUI {
             "path/to/ice_choco.jpg", "path/to/mint.jpg", "path/to/crisp_juice.jpg",
             "path/to/ice_vanilla.jpg", "path/to/lemonade.jpg"};
 
-    /**
-     * Launch the application.
-     */
-//    public static void main(String[] args) {
-//        EventQueue.invokeLater(new Runnable() { // 이벤트 큐를 사용하여 애플리케이션 실행
-//            public void run() {
-//                try {
-//                    FoodMenuUI window = new FoodMenuUI(client); // FoodMenuUI 객체 생성
-//                    window.frame.setVisible(true); // 프레임을 보이게 설정
-//                } catch (Exception e) { // 예외 처리
-//                    e.printStackTrace(); // 예외 출력
-//                }
-//            }
-//        });
-//    }
 
-    /**
-     * Create the application.
-     */
+
     public FoodMenuUI(Client client) {
         cartItems = new ArrayList<>(); // 장바구니 아이템 리스트 초기화
         itemQuantities = new HashMap<>(); // 아이템 수량 해시맵 초기화
@@ -84,9 +67,6 @@ public class FoodMenuUI {
         initialize(); // 초기화 메서드 호출
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
         frame = new JFrame(); // 프레임 객체 생성
         frame.setBounds(100, 100, 1240, 685); // 프레임 크기 및 위치 설정
@@ -106,9 +86,7 @@ public class FoodMenuUI {
         initCartPanel(); // 장바구니 패널 초기화
     }
 
-    /**
-     * Initialize the header panel.
-     */
+
     private void initHeaderPanel() {
         JPanel headerPanel = new JPanel(); // 헤더 패널 생성
         headerPanel.setBounds(0, 0, 1240, 50); // 헤더 패널 크기 및 위치 설정

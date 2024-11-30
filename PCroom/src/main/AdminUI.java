@@ -26,7 +26,6 @@ import seat.controller.SeatController;
 import seat.controller.SeatControllerImpl;
 import seat.vo.SeatVO;
 import chatNetwork.Server;
-import chatNetwork.Server.ClientReceiver; // ClientReceiver 클래스가 있는 패키지 경로를 정확히 지정
 
 
 public class AdminUI { // AdminUI 클래스를 선언

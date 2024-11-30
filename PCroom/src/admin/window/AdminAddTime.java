@@ -1,7 +1,6 @@
 package admin.window;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,18 +28,12 @@ public class AdminAddTime {
     private String userId;
 
 
-    /**
-     * Create the application.
-     */
     public AdminAddTime(String userId, int initialSeconds) {
     	this.userId = userId;
     	this.initialSeconds = initialSeconds;
         initialize();
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
         frame = new JFrame();
         frame.getContentPane().setBackground(Color.DARK_GRAY);
@@ -112,10 +105,7 @@ public class AdminAddTime {
         });
 
     }
-    
-    /**
-     * Set the visibility of the frame.
-     */
+
     public void setVisible(boolean isVisible) {
         frame.setVisible(isVisible);
     }

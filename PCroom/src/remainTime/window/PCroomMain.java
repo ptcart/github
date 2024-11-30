@@ -195,7 +195,6 @@ public class PCroomMain extends JFrame {
         btnMessage.setFocusPainted(false);
         btnMessage.setBorderPainted(false); // 테두리 제거
         btnMessage.addActionListener(e -> {
-//            JOptionPane.showMessageDialog(this, "메시지 버튼 클릭됨", "알림", JOptionPane.INFORMATION_MESSAGE);
         	// 유저 찾는 명령어 보내기
         	
         	ClientMessage CM = new ClientMessage(client, clientId, seatNumber);
@@ -491,10 +490,4 @@ public class PCroomMain extends JFrame {
         }
     }
 
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> {
-//            SeatSelection1 frame = new SeatSelection1("testUser", 5, 3600, new Client()); // 예시로 클라이언트 생성 및 프레임 설정
-//            frame.setVisible(true); // 프레임 보이기
-//        });
-//    }
 }

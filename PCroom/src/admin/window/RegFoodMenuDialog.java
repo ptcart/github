@@ -74,17 +74,7 @@ public class RegFoodMenuDialog extends JDialog {
         menuIdField.setBounds(130, 50, 250, 30);
         menuIdField.setEditable(false);  // 읽기 전용으로 설정
         getContentPane().add(menuIdField);
-
-//        // Menu Type
-//        JLabel lMenuType = new JLabel("종류:");
-//        lMenuType.setBounds(43, 100, 80, 30);
-//        lMenuType.setFont(labelFont);
-//        getContentPane().add(lMenuType);
-//        
-//        menuTypeField = new JTextField();
-//        menuTypeField.setBounds(130, 100, 250, 30);
-//        getContentPane().add(menuTypeField);
-        
+      
      // 음식 종류 라벨
         JLabel lFoodType = new JLabel("종류:");
         lFoodType.setBounds(43, 100, 80, 30);
@@ -181,7 +171,6 @@ public class RegFoodMenuDialog extends JDialog {
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String id = menuIdField.getText().trim();
-                //String type = menuTypeField.getText().trim();
                 // ComboBox에서 선택된 음식 종류 가져오기
                 String selectedType = (String) foodTypeComboBox.getSelectedItem();
                 String name = menuNameField.getText().trim();

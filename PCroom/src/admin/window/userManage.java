@@ -317,6 +317,7 @@ public class userManage extends JFrame{ // userManage 클래스 정의
             }
         });
     }
+    
         // UI 보이기
         public void showUI() {
             frame.setVisible(true);

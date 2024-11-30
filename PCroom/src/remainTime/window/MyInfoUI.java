@@ -168,12 +168,7 @@ public class MyInfoUI extends JFrame {
 						// 새로운 창을 이벤트 디스패치 스레드에서 생성하고 표시
 				        SwingUtilities.invokeLater(new Runnable() {
 				            public void run() {
-//				                    try {
-//				                        // Look and Feel 설정을 시스템 기본으로 적용
-				                        //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//				                    } catch (Exception ex) {
-//				                        ex.printStackTrace();
-//				                    }
+
 				                // PCroomClientWindow 인스턴스를 생성하고 표시
 				                PCroomClientWindow window = new PCroomClientWindow();
 				                window.frame.setVisible(true);

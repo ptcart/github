@@ -20,8 +20,6 @@ public interface FoodMenuController {
 	
 	public String findMenuIds(FoodMenuVO foodMenuVO);
 	
-	//public List<MemberVO> logMember(MemberVO memVO);
-
 }
 
 
